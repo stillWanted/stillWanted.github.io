@@ -403,65 +403,15 @@ box-shadow:0 0 20px red;
   justify-content: center;
 }
 
-/* @media (orientation: landscape) and (max-device-width : 1000px) {
-	#main {
-		margin-top: 10px;
-		margin-left: 30%;
-		margin-right: 30%;
-	}
-  
-	#header_PTCLogo{
-		height:20px;
-		margin: 10px 10px 0px 0px ;
+@media only screen and (min-device-width: 320px) and (max-device-width: 800px) and (orientation : landscape) {
+	
+	.ph-button {
+		float: left;
+		width: 50%;
 	}
 	
-	#header_VPLogo{
-		height:30px;
-		margin: 0 0 0 0;
-	}
-	.content_product_img {
-	height: 80px;
-}
-
-.list-products li img {
-  height: 40px;
-}
-
-.list-products h3 {
-  font-size: 15px;
-}
-
-#check_logo{
-	height: 20px;
-}
-
-#products_sum {
-	font-size: 15px;
-}
-
-#content_main h3, #checkout_button, #products_sum_price, #products_name li {
-	font-size: 14px;
-}
-
-#cgv {
-	font-size: 13px;
-}
-
-.content_cart_info {
-	margin-left: 10px;
-	width: auto;
-}
-
-.popup-container, .list-products {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-} */
-
-@media only screen and (min-device-width: 320px) and (max-device-height: 800px) and (orientation : landscape) {
-	#popup .popup-container {
-		margin: 0 auto !important;
+	.popup-container{
+		margin: 0 auto;
 	}
 }
 
