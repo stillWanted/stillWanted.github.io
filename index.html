@@ -59,7 +59,7 @@ $(document).ready(function() {
 			if(check){
 				html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
 			}
-        },1000);
+        }),1000);
         $('#result').append(html);
     });
 });
