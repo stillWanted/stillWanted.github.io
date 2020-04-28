@@ -14,7 +14,7 @@ $(document).ready(function() {
 			console.log(item.name)
 			console.log(item.artist.name)
 			$.getJSON("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&artist=item.artist.name&album=item.name", function(json2) {
-				console.log(json2.album.releasedate)
+				console.log(json2)
 			});
             html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
         });
