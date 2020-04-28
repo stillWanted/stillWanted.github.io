@@ -23,7 +23,7 @@ function check1(item,index){
 			check2020 = json.album.tags.tag.some(item => item.name == 2020) || new Date(json.album.releasedate).getFullYear()==2020
 			console.log("Check 1, "+item.name+" : " + check2020)
 			console.log(index*100/$('#id1').val())
-			$('#demoprogressbar1').LineProgressbar({
+			$('#progressbar1').LineProgressbar({
 				percentage: index*100/$('#id1').val()
 			});
 		}
