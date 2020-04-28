@@ -14,7 +14,7 @@ function check1(item){
 	$.getJSON(url, function(json) {
 		console.log(json)
 		check2020 = json.album.tags.tag.some(item => item.name === '2020')
-		console.log(check2020)
+		console.log("Check 1, "+item.name+" : " + check2020)
 	});
 	return check2020
 }
@@ -29,6 +29,7 @@ function check2(item){
 			console.log(json2["release-events"][0].date)
 			console.log(json2["release-events"][0].date.split("-")[0])
 			check2020 = json2["release-events"][0].date.split("-")[0] === '2020'
+			console.log("Check 2, "+item.name+" : " + check2020)
 		});
 	}
 	return check2020
