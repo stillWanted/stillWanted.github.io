@@ -42,27 +42,13 @@ $(document).ready(function() {
         $.each(json.topalbums.album, function(i, item) {
 			console.log(item.name)
 			console.log(item.artist.name)
-			var mbid = item.mbid
-			if(mbid===""){
-				console.log("Pas de mbid")
-				var nom = item.name
-				var artiste = item.artist.name
-				var url2 = "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&artist="+artiste+"&album="+nom+"&format=json"
-				$.getJSON(url2, function(json2) {
-					console.log(json2.album.tags.tag.some(item => item.name === '2020'));
-					console.log(json2)
-				});
+			check = check1(item)
+			if(check===false){
+				check = check2(item)
 			}
-			else{
-				var url = "https://musicbrainz.org/ws/2/release/"+mbid+"?fmt=json"
-				console.log(url)
-				$.getJSON(url, function(json2) {
-					console.log(json2)
-					console.log(json2["release-events"][0].date)
-					console.log(json2["release-events"][0].date.split("-")[0])
-				});
+			if(check){
+				html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
 			}
-            html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
         });
         $('#result').append(html);
     });
