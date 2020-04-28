@@ -70,7 +70,7 @@ function getData() {
 	$('#progressbar1').LineProgressbar({percentage: 0}); 
 	var url = "https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user="+$('#id2').val()+"&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit="+$('#id1').val()
     $.getJSON(url, function(json) {
-		let index = 0
+		let index = 1
         console.log(json)
         $.each(json.topalbums.album, function(i, item) {
 			process(item,index)
