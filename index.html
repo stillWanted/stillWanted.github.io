@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Get the top artists and their playcounts using last.fm API</title>
+<title>Top albums sortis en 2020</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
@@ -54,7 +54,7 @@ function process(item,index) {
 			check = check2(item)
 		}
 		if(check){
-			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Play count : " +item.playcount + "</a></p>");
+			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
 		}
   }, 1000 * index); 
 } 
