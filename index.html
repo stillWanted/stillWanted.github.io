@@ -17,7 +17,7 @@ function check1(item){
 		async: false,
 		success: function(json){
 			console.log(json)
-			check2020 = json.album.tags.tag.some(item => item.name == 2020) || new Date(json.album.wiki.published).getFullYear()==2020 || new Date(json.album.releasedate).getFullYear()==2020
+			check2020 = json.album.tags.tag.some(item => item.name == 2020) || new Date(json.album.releasedate).getFullYear()==2020
 			console.log("Check 1, "+item.name+" : " + check2020)
 		}
 	});
