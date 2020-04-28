@@ -72,6 +72,7 @@ function getData() {
         $.each(json.topalbums.album, function(i, item) {
 			process(item,index)
 			index++
+			console.log(index/$('#id1').val())
 			bar1.set(index/$('#id1').val())
         });
     });
