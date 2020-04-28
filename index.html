@@ -6,10 +6,39 @@
 </head>
 <body>
 <script>
+function check1(item){
+	var check2020 = false
+	var nom = item.name
+	var artiste = item.artist.name
+	var url = "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&artist="+artiste+"&album="+nom+"&format=json"
+	$.getJSON(url, function(json) {
+		console.log(json)
+		check2020 = json.album.tags.tag.some(item => item.name === '2020')
+		console.log(check2020)
+	});
+	return check2020
+}
+
+function check2(item){
+	var check2020 = false
+	if(item.mbid!==""){
+		var url = "https://musicbrainz.org/ws/2/release/"+mbid+"?fmt=json"
+		console.log(url)
+		$.getJSON(url, function(json2) {
+			console.log(json2)
+			console.log(json2["release-events"][0].date)
+			console.log(json2["release-events"][0].date.split("-")[0])
+			check2020 = json2["release-events"][0].date.split("-")[0] === '2020'
+		});
+	}
+	return check2020
+}
+
 $(document).ready(function() {
     $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=10", function(json) {
         console.log(json)
 		var html = '';
+		var check = false
         $.each(json.topalbums.album, function(i, item) {
 			console.log(item.name)
 			console.log(item.artist.name)
@@ -30,6 +59,7 @@ $(document).ready(function() {
 				$.getJSON(url, function(json2) {
 					console.log(json2)
 					console.log(json2["release-events"][0].date)
+					console.log(json2["release-events"][0].date.split("-")[0])
 				});
 			}
             html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
