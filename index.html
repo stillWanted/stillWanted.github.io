@@ -11,6 +11,8 @@ $(document).ready(function() {
         console.log(json)
 		var html = '';
         $.each(json.topalbums.album, function(i, item) {
+			console.log(item.name)
+			console.log(item.artist.name)
             html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
         });
         $('#result').append(html);
