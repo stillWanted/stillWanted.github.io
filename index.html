@@ -23,7 +23,7 @@ function check1(item,index){
 			$('#progressbar1').LineProgressbar({
 				percentage: index*100/$('#id1').val()
 			});
-			if(json.album.tags!==undefined || json.album.releasedate!==undefined){
+			if(json.error===undefined && (json.album.tags!==undefined || json.album.releasedate!==undefined)){
 				checky = json.album.tags.tag.some(item => item.name == year) || new Date(json.album.releasedate).getFullYear()==year
 			}
 		}
