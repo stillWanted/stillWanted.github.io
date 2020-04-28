@@ -54,7 +54,7 @@ function process(item,index) {
 			check = check2(item)
 		}
 		if(check){
-			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>");
+			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Play count : " +item.playcount + "</a></p>");
 		}
   }, 1000 * index); 
 } 
