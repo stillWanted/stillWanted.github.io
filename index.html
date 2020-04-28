@@ -27,14 +27,17 @@ function check1(item){
 function check2(item){
 	var check2020 = false
 	if(item.mbid!==""){
-		var url = "https://musicbrainz.org/ws/2/release/"+item.mbid+"?fmt=json"
-		console.log(url)
-		$.getJSON(url, function(json2) {
-			console.log(json2)
-			console.log(json2["release-events"][0].date)
-			console.log(json2["release-events"][0].date.split("-")[0])
-			check2020 = json2["release-events"][0].date.split("-")[0] === '2020'
-			console.log("Check 2, "+item.name+" : " + check2020)
+		var myUrl = "https://musicbrainz.org/ws/2/release/"+item.mbid+"?fmt=json"
+		$.ajax {
+			url: myUrl,
+			dataType: 'json',
+			async: false,
+			success: function(json2){
+				console.log(json2)
+				console.log(json2["release-events"][0].date)
+				console.log(json2["release-events"][0].date.split("-")[0])
+				check2020 = json2["release-events"][0].date.split("-")[0] === '2020'
+				console.log("Check 2, "+item.name+" : " + check2020)
 		});
 	}
 	return check2020
