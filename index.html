@@ -28,7 +28,7 @@ function check2(item){
 	var check2020 = false
 	if(item.mbid!==""){
 		var myUrl = "https://musicbrainz.org/ws/2/release/"+item.mbid+"?fmt=json"
-		$.ajax {
+		$.ajax({
 			url: myUrl,
 			dataType: 'json',
 			async: false,
