@@ -7,7 +7,7 @@
 <body>
 <script>
 $(document).ready(function() {
-    $.getJSON("http://ws.audioscrobbler.com/2.0/?method=user.getTopArtists&user=test&api_key=4a9f5581a9cdf20a699f540ac52a95c9&limit=10&format=json&callback=?", function(json) {
+    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.getTopArtists&user=test&api_key=4a9f5581a9cdf20a699f540ac52a95c9&limit=10&format=json&callback=?", function(json) {
         var html = '';
         $.each(json.topartists.artist, function(i, item) {
             html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
