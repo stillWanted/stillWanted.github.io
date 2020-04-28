@@ -58,6 +58,9 @@ function process(item,index) {
 		if(check){
 			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
 		}
+		var bar1 = $('#myItem1').ldBar;
+		console.log(index*100/$('#id1').val())
+		bar1.set(index*100/$('#id1').val())
   }, 1000 * index); 
 } 
 
@@ -66,14 +69,11 @@ function getData() {
     $.getJSON(url, function(json) {
 		let index = 0
 		var bar1 = new ldBar("#myItem1");
-		var bar2 = $('#myItem1').ldBar;
 		bar1.set(0);
         console.log(json)
         $.each(json.topalbums.album, function(i, item) {
 			process(item,index)
 			index++
-			console.log(index/$('#id1').val())
-			bar1.set(index/$('#id1').val())
         });
     });
 }
