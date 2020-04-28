@@ -7,19 +7,18 @@
 <body>
 <script>
 $(document).ready(function() {
-    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=100", function(json) {
+    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=1000", function(json) {
         console.log(json)
 		var html = '';
         $.each(json.topalbums.album, function(i, item) {
 			console.log(item.name)
 			console.log(item.artist.name)
-			var nom = item.name
-			var artiste = item.artist.name
-			var url = "https://api.discogs.com/database/search?page=1&per_page=1&type=release&artist="+artiste+"&release_title="+nom+"&token=tbQPIIYaRSoohhitMwtsUCdnUKYGZRPtPddWbrpS"
+			var mbid = item.mbid
+			var url = "https://musicbrainz.org/ws/2/release/"+mbid+"?fmt=json"
 			console.log(url)
 			$.getJSON(url, function(json2) {
 				console.log(json2)
-				console.log(json2.results.year)
+				console.log(json2.release-events.date)
 			});
             html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
         });
