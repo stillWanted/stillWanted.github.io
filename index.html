@@ -6,10 +6,6 @@
 </head>
 <body>
 <script>
-const sleep = (milliseconds) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
-
 function check1(item){
 	var check2020 = false
 	var nom = item.name
@@ -48,25 +44,29 @@ function check2(item){
 	return check2020
 }
 
+function process(item,index) { 
+  setTimeout(function() {
+		var check = false
+		console.log(item.name)
+		console.log(item.artist.name)
+		check = check1(item)
+		if(check===false){
+			check = check2(item)
+		}
+		if(check){
+			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>");
+		}
+  }, 1000 * index); 
+} 
+
 $(document).ready(function() {
     $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=100", function(json) {
+		let index = 0
         console.log(json)
-		var html = '';
-		var check = false
         $.each(json.topalbums.album, function(i, item) {
-			sleep(1000).then(() => {
-			console.log(item.name)
-			console.log(item.artist.name)
-			check = check1(item)
-			if(check===false){
-				check = check2(item)
-			}
-			if(check){
-				html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
-			}
-			})
+			process(item,index)
+			index++
         });
-        $('#result').append(html);
     });
 });
 </script>
