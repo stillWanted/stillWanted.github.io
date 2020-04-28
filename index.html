@@ -9,7 +9,7 @@
 </head>
 <body>
 <script>
-function check1(item){
+function check1(item,index){
 	var check2020 = false
 	var nom = item.name
 	var artiste = item.artist.name
@@ -22,6 +22,9 @@ function check1(item){
 			console.log(json)
 			check2020 = json.album.tags.tag.some(item => item.name == 2020) || new Date(json.album.releasedate).getFullYear()==2020
 			console.log("Check 1, "+item.name+" : " + check2020)
+			$('#demoprogressbar1').LineProgressbar({
+				percentage: index*100/$('#id1').val()
+			});
 		}
 	});
 	return check2020
@@ -52,17 +55,14 @@ function process(item,index) {
 		var check = false
 		console.log(item.name)
 		console.log(item.artist.name)
-		check = check1(item)
+		check = check1(item,index)
 		if(check===false){
 			check = check2(item)
 		}
 		if(check){
 			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
 		}
-		$('#demoprogressbar1').LineProgressbar({
-			percentage: index*100/$('#id1').val()
-		});
-  }, 10000 * index); 
+  }, 1000 * index); 
 } 
 
 function getData() {
