@@ -14,6 +14,14 @@ $(document).ready(function() {
 			console.log(item.name)
 			console.log(item.artist.name)
 			var mbid = item.mbid
+			if(mbid===""){
+				var nom = item.name
+				var artiste = item.artist.name
+				var url2 = "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&artist="+artiste+"&album="+nom+"&format=json"
+				$.getJSON(url2, function(json2) {
+					console.log(json2)
+				});
+			}
 			var url = "https://musicbrainz.org/ws/2/release/"+mbid+"?fmt=json"
 			console.log(url)
 			$.getJSON(url, function(json2) {
