@@ -60,7 +60,7 @@ function process(item,index) {
 } 
 
 function getData() {
-	var url = "https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user="+$('#id1').innerHTML+"&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=500"
+	var url = "https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user="+$('#id1').value+"&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=500"
     $.getJSON(url, function(json) {
 		let index = 0
         console.log(json)
