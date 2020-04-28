@@ -10,29 +10,24 @@
 <body>
 <script>
 function check1(item,index){
-	var check2020 = false
-	var nom = item.name
-	var artiste = item.artist.name
-	var myUrl = "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&artist="+artiste+"&album="+nom+"&format=json"
+	var myUrl = "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&artist="+item.artist.name+"&album="+item.name+"&format=json"
 	$.ajax({
 		url: myUrl,
 		dataType: 'json',
 		async: false,
 		success: function(json){
 			console.log(json)
-			check2020 = json.album.tags.tag.some(item => item.name == 2020) || new Date(json.album.releasedate).getFullYear()==2020
-			console.log("Check 1, "+item.name+" : " + check2020)
-			console.log(index*100/$('#id1').val())
 			$('#progressbar1').LineProgressbar({
 				percentage: index*100/$('#id1').val()
 			});
+			if(json.album.tags===undefined || json.album.releasedate===undefined)
+				return false
+			else return check2020 = json.album.tags.tag.some(item => item.name == 2020) || new Date(json.album.releasedate).getFullYear()==2020
 		}
 	});
-	return check2020
 }
 
 function check2(item){
-	var check2020 = false
 	if(item.mbid!==""){
 		var myUrl = "https://musicbrainz.org/ws/2/release/"+item.mbid+"?fmt=json"
 		$.ajax({
@@ -41,14 +36,10 @@ function check2(item){
 			async: false,
 			success: function(json2){
 				console.log(json2)
-				console.log(json2["release-events"][0].date)
-				console.log(json2["release-events"][0].date.split("-")[0])
-				check2020 = json2["release-events"][0].date.split("-")[0] === '2020'
-				console.log("Check 2, "+item.name+" : " + check2020)
+				return json2["release-events"][0].date.split("-")[0] === '2020'
 		}
 		});
 	}
-	return check2020
 }
 
 function process(item,index) { 
@@ -60,7 +51,7 @@ function process(item,index) {
 		if(check===false){
 			check = check2(item)
 		}
-		if(check){
+		else{
 			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
 		}
   }, 1000 * index); 
