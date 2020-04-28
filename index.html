@@ -10,9 +10,9 @@
 <body>
 <script>
 let nbAlbums = 0
-
+let year = 2020
 function check1(item,index){
-	var check2020 = false
+	var checky = false
 	var myUrl = "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&artist="+item.artist.name+"&album="+item.name+"&format=json"
 	$.ajax({
 		url: myUrl,
@@ -24,15 +24,15 @@ function check1(item,index){
 				percentage: index*100/$('#id1').val()
 			});
 			if(json.album.tags!==undefined || json.album.releasedate!==undefined){
-				check2020 = json.album.tags.tag.some(item => item.name == 2020) || new Date(json.album.releasedate).getFullYear()==2020
+				checky = json.album.tags.tag.some(item => item.name == year) || new Date(json.album.releasedate).getFullYear()==year
 			}
 		}
 	});
-	return check2020
+	return checky
 }
 
 function check2(item){
-	var check2020 = false
+	var checky = false
 	if(item.mbid!==""){
 		var myUrl = "https://musicbrainz.org/ws/2/release/"+item.mbid+"?fmt=json"
 		$.ajax({
@@ -41,11 +41,11 @@ function check2(item){
 			async: false,
 			success: function(json2){
 				console.log(json2)
-				check2020 = json2["release-events"][0].date.split("-")[0] === '2020'
+				checky = json2["release-events"][0].date.split("-")[0] == year
 		}
 		});
 	}
-	return check2020
+	return checky
 }
 
 function process(item,index) {
