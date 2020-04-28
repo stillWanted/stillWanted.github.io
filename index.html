@@ -15,7 +15,6 @@ function check1(item){
 		url: myUrl,
 		dataType: 'json',
 		async: false,
-		headers: {"Access-Control-Allow-Origin": "*"},
 		success: function(json){
 			console.log(json)
 			check2020 = json.album.tags.tag.some(item => item.name === '2020')
@@ -33,7 +32,6 @@ function check2(item){
 			url: myUrl,
 			dataType: 'json',
 			async: false,
-			headers: {"Access-Control-Allow-Origin": "*"},
 			success: function(json2){
 				console.log(json2)
 				console.log(json2["release-events"][0].date)
