@@ -3,10 +3,11 @@
 <head>
 <title>Top albums sortis en 2020</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+<script src="jquery.lineProgressbar.js"></script>
+<link rel="stylesheet" href="jquery.lineProgressbar.css" />
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="loading-bar.css"/>
-<script type="text/javascript" src="loading-bar.js"></script>
 <script>
 function check1(item){
 	var check2020 = false
@@ -58,13 +59,14 @@ function process(item,index) {
 		if(check){
 			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
 		}
-		var bar1 = $('#myItem1').ldBar;
-		console.log(index*100/$('#id1').val())
-		bar1.set(index*100/$('#id1').val())
+		$('#demoprogressbar1').LineProgressbar({
+			percentage: index*100/$('#id1').val()
+		});
   }, 1000 * index); 
 } 
 
 function getData() {
+	$('#progressbar1').LineProgressbar(); 
 	var url = "https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user="+$('#id2').val()+"&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit="+$('#id1').val()
     $.getJSON(url, function(json) {
 		let index = 0
@@ -76,8 +78,7 @@ function getData() {
     });
 }
 </script>
-<div class="ldBar" id="myItem1" data-value="0">
-</div>
+<div id="progressbar1"></div>
 <p>Analyser mes <input id="id1" type="number" required> albums les + écoutés ces 12 derniers mois</p>
 <p>Votre pseudo Last.fm:</p>
 <input id="id2" type="text" required>
