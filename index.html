@@ -60,7 +60,7 @@ function process(item,index) {
 } 
 
 $(document).ready(function() {
-    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillwanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=50", function(json) {
+    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillwanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=500", function(json) {
 		let index = 0
         console.log(json)
         $.each(json.topalbums.album, function(i, item) {
