@@ -45,7 +45,7 @@ function check2(item){
 }
 
 $(document).ready(function() {
-    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=100", function(json) {
+    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=200", function(json) {
         console.log(json)
 		var html = '';
 		var check = false
