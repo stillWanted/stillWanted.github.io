@@ -57,8 +57,8 @@ function process(item,index) {
 		if(check===false){
 			check = check2(item)
 		}
-		else{
-			index--
+		else index--
+		if(check){
 			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
 		}
   }, 1000 * index); 
