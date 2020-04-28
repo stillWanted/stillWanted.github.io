@@ -7,7 +7,7 @@
 <body>
 <script>
 $(document).ready(function() {
-    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=1000", function(json) {
+    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillWanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=10", function(json) {
         console.log(json)
 		var html = '';
         $.each(json.topalbums.album, function(i, item) {
@@ -18,7 +18,7 @@ $(document).ready(function() {
 			console.log(url)
 			$.getJSON(url, function(json2) {
 				console.log(json2)
-				console.log(json2.release-events.date)
+				console.log(json2.release-events[0].date)
 			});
             html += "<p><a href=" + item.url + " target='_blank'>" + item.name + " - " + "Play count : " +item.playcount + "</a></p>";
         });
