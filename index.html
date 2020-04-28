@@ -5,6 +5,8 @@
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
+<link rel="stylesheet" type="text/css" href="loading-bar.css"/>
+<script type="text/javascript" src="loading-bar.js"></script>
 <script>
 function check1(item){
 	var check2020 = false
@@ -71,6 +73,8 @@ function getData() {
     });
 }
 </script>
+<div class="ldBar" data-value="50">
+</div>
 <p>Analyser mes <input id="id1" type="number" required> albums les + écoutés ces 12 derniers mois</p>
 <p>Votre pseudo Last.fm:</p>
 <input id="id2" type="text" required>
