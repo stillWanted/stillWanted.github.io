@@ -48,17 +48,19 @@ function check2(item){
 
 function process(item,index) { 
   setTimeout(function() {
+		var flag = 0
 		var check = false
 		console.log(item.name)
 		console.log(item.artist.name)
 		check = check1(item,index)
 		if(check===false){
 			check = check2(item)
+			flag=1
 		}
 		if(check){
 			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
 		}
-  }, 1000 * index); 
+  }, 1000 * index * flag); 
 } 
 
 function getData() {
