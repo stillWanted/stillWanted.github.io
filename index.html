@@ -59,8 +59,9 @@ function process(item,index) {
   }, 1000 * index); 
 } 
 
-$(document).ready(function() {
-    $.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user=stillwanted&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=500", function(json) {
+function getData() {
+	var url = "https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user="+$('#id1').innerHTML+"&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit=500"
+    $.getJSON(url, function(json) {
 		let index = 0
         console.log(json)
         $.each(json.topalbums.album, function(i, item) {
@@ -68,8 +69,11 @@ $(document).ready(function() {
 			index++
         });
     });
-});
+}
 </script>
+<p>Votre pseudo Last.fm:</p>
+<input id="id1" type="text" required>
+<button onclick="getData()">OK</button>
 <div id="result"></div>
 </body>
 </html>
