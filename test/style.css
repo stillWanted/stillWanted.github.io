@@ -192,6 +192,10 @@ li {
   vertical-align: middle;
 }
 
+.task img{
+	width: 100%;
+}
+
 #taskText {
   background: #fff;
   border: #000013 0.15rem solid;
