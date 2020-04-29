@@ -64,7 +64,7 @@ function process(item,index) {
 		else index--
 		if(check){
 			$('#result').append("<p><a href=" + item.url + " target='_blank'>" + item.artist.name + " : " + item.name + " - " + "Scrobbles : " +item.playcount + "</a></p>");
-			addTask(item.image[0]["#text"]);
+			addTask(item.image[1]["#text"]);
 		}
   }, 1000 * index); 
 } 
