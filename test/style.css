@@ -87,20 +87,28 @@ a:hover {
   text-align: center;
 }
 
-.to-do-column .column-header {
+.trier-column .column-header {
   background: #ff872f;
 }
 
-.doing-column .column-header {
-  background: #13a4d9;
+.excellent-column .column-header {
+  background: #49b675;
 }
 
-.done-column .column-header {
-  background: #15d072;
+.tbon-column .column-header {
+  background: #90EE90;
+}
+
+.cool-column .column-header {
+  background: #FFFF00;
+}
+
+.bof-column .column-header {
+  background: #DC143C;
 }
 
 .trash-column .column-header {
-  background: #ff4444;
+  background: #fefee2;
 }
 
 .task-list {
