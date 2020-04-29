@@ -1,11 +1,13 @@
 dragula([
-  document.getElementById("to-do"),
-  document.getElementById("doing"),
-  document.getElementById("done"),
+  document.getElementById("trier"),
+  document.getElementById("excellent"),
+  document.getElementById("tbon"),
+  document.getElementById("cool"),
+  document.getElementById("bof"),
   document.getElementById("trash")]);
 
 function addTask(url) {
-  document.getElementById("to-do").innerHTML +=
+  document.getElementById("trier").innerHTML +=
     "<li class='task'><img src="+url+"/></li>";
 }
 
