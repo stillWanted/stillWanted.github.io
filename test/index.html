@@ -68,7 +68,7 @@ function process(item,index) {
 
 function getData() {
 	$('#progressbar1').LineProgressbar({percentage: 0}); 
-	var url = "https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=6month&user="+$('#id2').val()+"&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit="+$('#id1').val()
+	var url = "https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=12month&user="+$('#id2').val()+"&api_key=270fbe267c5929d405f0efc2734291ef&format=json&limit="+$('#id1').val()
     $.getJSON(url, function(json) {
 		nbAlbums = json.topalbums.album.length
 		let index = 1
